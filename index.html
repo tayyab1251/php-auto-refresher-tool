@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PHP Auto Refresher</title>
+    <!-- jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      /* Very basic styling */
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      #content {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        min-height: 50px;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        background-color: #888;
+        cursor: not-allowed;
+      }
+
+      #loading {
+        display: none;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>PHP Auto Refresher</h2>
+    <p>This tool helps you load PHP content without refreshing the page.</p>
+
+    <!-- Button to load PHP content -->
+    <button id="load">Load PHP Content</button>
+
+    <!-- Loading GIF (hidden by default) -->
+    <img id="loading" src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="Loading..." width="30" height="30"/>
+
+    <!-- Div to display the loaded content -->
+    <div id="content"></div>
+
+    <script>
+      $(document).ready(function () {
+        let isLoading = false; // Track loading state
+
+        $('#load').click(function () {
+          if (isLoading) return; // Prevent multiple clicks
+
+          isLoading = true; // Set loading state
+          $('#load').prop('disabled', true); // Disable button
+          $('#loading').show(); // Show loading GIF
+          $('#content').html(''); // Clear previous content
+
+          // AJAX request to load PHP file
+          $.get('content.php') // Change 'content.php' to your PHP file
+            .done(function (data) {
+              $('#content').html(data); // Display the loaded content
+            })
+            .fail(function () {
+              $('#content').html('<p style="color:red;">Error loading content. Please try again.</p>'); // Show error
+            })
+            .always(function () {
+              $('#loading').hide(); // Hide loading GIF
+              $('#load').prop('disabled', false); // Re-enable button
+              isLoading = false;
+            });
+        });
+      });
+    </script>
+  </body>
+</html>
