@@ -74,23 +74,13 @@ A simple tool for beginners to load PHP content dynamically without manually ref
 
 ## File Structure
 
-No problem! Let’s clarify exactly where to place the license section in your README.md file.
-
-Step-by-Step to Add the License Section
-Open your README.md file in your text editor or IDE.
-
-Scroll to the very bottom of the file. This is the best place to add the license information because it’s common to have it at the end of the README.
-
-Add the license section right after the "File Structure" section. Here’s the layout to visualize where it should go:
-
 markdown
-Copy code
+
 ## File Structure
 
 php-auto-refresher/ ├── index.html # Main HTML file with AJAX for auto-refresh ├── content.php # PHP script loaded dynamically └── README.md # Instructions for setup
 
 yaml
-Copy code
 
 ---
 
@@ -101,7 +91,7 @@ Complete Example of Your README.md
 Here’s how your entire README.md should look after adding the license section at the bottom:
 
 markdown
-Copy code
+
 # PHP Auto Refresher
 
 A simple tool for beginners to load PHP content dynamically without manually refreshing the browser. This guide provides instructions for setting up the project in both **XAMPP** and **WAMP** environments.
